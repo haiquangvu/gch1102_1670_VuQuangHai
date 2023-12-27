@@ -1,0 +1,44 @@
+﻿@model IEnumerable<BookEshop.Models.Product>
+
+@{
+    ViewData["Title"] = "Admin";
+}
+<h4>List of Book</h4>
+<p>
+    <a asp-action="Create" class="btn btn-sm btn-primary"> Add New</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Product Photo</th>
+            <th> Product Name </th>
+            <th> Product Description</th>
+            <th> Product Category</th>
+            <th>Product Price</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/img/@item.ProductPhoto" class="rounded-circle" height="100" width="100" />   
+                </td>
+                <td>@item.ProductName</td>
+                <td>@item.ProductDescription</td>
+                <td>@item.CategoryId</td>
+                <td>@item.ProductPrice</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProductId" class="btn btn-sm btn-primary">Edit</a>
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ProductId" class="btn btn-sm btn-info">Details</a>
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.ProductId" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
